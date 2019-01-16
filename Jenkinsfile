@@ -3,7 +3,7 @@ node('master') {
 	{ 
         git 'https://github.com/tymchyshynn/JenkinsTests.git'
     }
-    stage('Second Stage') { 
-       echo "Yo2" 
+    stage('Restore NuGet') { 
+      bat '"C:\\nuget.exe" restore src/PhpTravels.UITests.sln'
     }
 }
