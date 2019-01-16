@@ -1,6 +1,7 @@
 node {  
-    stage('First Stage') { 
-        echo "Yo" 
+    stage('Checkout') 
+	{ 
+        git 'https://github.com/tymchyshynn/JenkinsTests.git'
     }
     stage('Second Stage') { 
        echo "Yo2" 
