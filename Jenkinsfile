@@ -5,6 +5,6 @@ node('master') {
     }
     stage('Restore NuGet') 
 	{ 
-       bat '"C:/Dev/nuget.exe" restore src/PhpTravels.UITests.sln'
+       bat '"C:/Dev/nuget.exe" restore PhpTravels.UITests.sln'
     }
 }
