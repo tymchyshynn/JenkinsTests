@@ -17,7 +17,7 @@ namespace PhpTravels.UITests
         public void Hotel_Edit()
         {   
             System.Threading.Thread.Sleep(5000);
-            Assert.True(true);
+            Assert.True(false);
         }
 
        
