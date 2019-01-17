@@ -29,7 +29,7 @@ node('master') {
     }
     stage('Restore NuGet') 
 	{ 
-       powershell "build.ps1 RestoreNuGetPackages"
+     powershell "build.ps1 RestoreNuGetPackages"
     }
 	stage('Build Solution')
     {
