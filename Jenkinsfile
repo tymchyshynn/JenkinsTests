@@ -1,5 +1,11 @@
+properties([
+    parameters([
+        string (name: 'branchName', defaultValue: 'master', description: 'Branch to get the tests from')
+    ])
+])
 def isFailed = false 
-
+def branch = params.branchName
+currentBuild.description = "Branch: $branch"
 
 node('master') {  
     stage('Checkout') 
@@ -23,15 +29,15 @@ node('master') {
 		}
 		isFailed =true
 	}
-	stage('Reporting')
-    {
-        if(isFailed)
-        {
-            slackSend color: 'danger', message: 'Tests failed.'
-        }
-        else
-        {
-            slackSend color: 'good', message: 'Tests passed.'
-        }
-    }
+	#stage('Reporting')
+    #{
+     #   if(isFailed)
+      #  {
+       #     slackSend color: 'danger', message: 'Tests failed.'
+        #}
+        #else
+        #{
+          #  slackSend color: 'good', message: 'Tests passed.'
+        #}
+    #}
 }
