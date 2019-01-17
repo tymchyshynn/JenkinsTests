@@ -39,7 +39,7 @@ catchError
 					bat "C:/Users/vasyl.tymchyshyn/Desktop/NUnit.Console-3.9.0/nunit3-console.exe $buildArtifactsFolder/PhpTravels.UITests.dll --where cat==FirstTest"
 				}
 			}, SecondTest:{
-				nodeode('Slave')
+				node('Slave')
 				{
 					bat "C:/Users/vasyl.tymchyshyn/Desktop/NUnit.Console-3.9.0/nunit3-console.exe $buildArtifactsFolder/PhpTravels.UITests.dll --where cat==SecondTest"
 				}
