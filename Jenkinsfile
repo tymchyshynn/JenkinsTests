@@ -27,7 +27,7 @@ catchError
 		isFailed = true
 		stage('Run Tests')
 		{
-		    parallel: FirstTest{		
+		    parallel FirstTest:{		
 				node('master')
 				{
 					bat '"C:/Users/vasyl.tymchyshyn/Desktop/NUnit.Console-3.9.0/nunit3-console.exe" PhpTravels.UITests/bin/Debug/PhpTravels.UITests.dll --where cat==FirstTest'
