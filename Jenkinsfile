@@ -29,7 +29,7 @@ node('master') {
     }
     stage('Restore NuGet') 
 	{ 
-       bat '"C:\\Dev\\nuget.exe" restore PhpTravels.UITests.sln'
+       powershell "build.ps1 RestoreNuGetPackages"
     }
 	stage('Build Solution')
     {
@@ -71,8 +71,7 @@ catchError
 
         archiveArtifacts '*.xml'
         nunit testResultsPattern: 'TestResult1.xml, TestResult2.xml'
-
-        
+  
     }
 }
 	
