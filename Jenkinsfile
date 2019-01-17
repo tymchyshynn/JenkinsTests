@@ -10,7 +10,7 @@ currentBuild.description = "Branch: $branch"
 node('master') {  
     stage('Checkout') 
 	{ 
-        git 'https://github.com/tymchyshynn/JenkinsTests.git'
+      git branch: branch, url: 'https://github.com/tymchyshynn/JenkinsTests.git'
     }
     stage('Restore NuGet') 
 	{ 
