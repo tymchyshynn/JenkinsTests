@@ -1,3 +1,6 @@
+def isFailed = false 
+
+
 node('master') {  
     stage('Checkout') 
 	{ 
@@ -11,8 +14,24 @@ node('master') {
     {
         bat '"C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" PhpTravels.UITests.sln'
     }
-   stage('Run tests')
+	catchError
+	{
+		isFailed = true
+		stage('Run Tests')
+		{
+			bat '"C:/Users/vasyl.tymchyshyn/Desktop/NUnit.Console-3.9.0/nunit3-console.exe" PhpTravels.UITests/bin/Debug/PhpTravels.UITests.dll'
+		}
+		isFailed =true
+	}
+	stage('Reporting')
     {
-        bat '"C:/Users/vasyl.tymchyshyn/Desktop/NUnit.Console-3.9.0/nunit3-console.exe" PhpTravels.UITests/bin/Debug/PhpTravels.UITests.dll'
+        if(isFailed)
+        {
+            slackSend color: 'danger', message: 'Tests failed.'
+        }
+        else
+        {
+            slackSend color: 'good', message: 'Tests passed.'
+        }
     }
 }
