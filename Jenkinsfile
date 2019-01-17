@@ -5,7 +5,9 @@ properties([
 ])
 def isFailed = false 
 def branch = params.branchName
+def buildArtifactsFolder = "C:/BuildPackagesFromPipeline/$BUILD_ID"
 currentBuild.description = "Branch: $branch"
+
 
 node('master') {  
     stage('Checkout') 
@@ -20,6 +22,10 @@ node('master') {
     {
         bat '"C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" PhpTravels.UITests.sln'
     }	
+	stage('Copy Artifacts')
+    {
+        bat "(robocopy PhpTravels.UITests/bin/Debug $buildArtifactsFolder /MIR /XO) ^& IF %ERRORLEVEL% LEQ 1 exit 0"
+    }
 }
 
 catchError
@@ -30,12 +36,12 @@ catchError
 		    parallel FirstTest:{		
 				node('master')
 				{
-					bat '"C:/Users/vasyl.tymchyshyn/Desktop/NUnit.Console-3.9.0/nunit3-console.exe" PhpTravels.UITests/bin/Debug/PhpTravels.UITests.dll --where cat==FirstTest'
+					bat "C:/Users/vasyl.tymchyshyn/Desktop/NUnit.Console-3.9.0/nunit3-console.exe $buildArtifactsFolder/PhpTravels.UITests.dll --where cat==FirstTest"
 				}
 			}, SecondTest:{
 				nodeode('Slave')
 				{
-					bat '"C:/Users/vasyl.tymchyshyn/Desktop/NUnit.Console-3.9.0/nunit3-console.exe" PhpTravels.UITests/bin/Debug/PhpTravels.UITests.dll --where cat==SecondTest'
+					bat "C:/Users/vasyl.tymchyshyn/Desktop/NUnit.Console-3.9.0/nunit3-console.exe $buildArtifactsFolder/PhpTravels.UITests.dll --where cat==SecondTest"
 				}
 			}
 		}

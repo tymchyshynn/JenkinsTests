@@ -6,14 +6,14 @@ namespace PhpTravels.UITests
 {
     public class HotelTests : UITestFixture
     {
-        [Test, Category("First Test")]
+        [Test, Category("FirstTest")]
         public void Hotel_Add()
         {
             System.Threading.Thread.Sleep(3000);
             Assert.True(true);
         }
 
-        [Test, Category("Second Test")]
+        [Test, Category("SecondTest")]
         public void Hotel_Edit()
         {   
             System.Threading.Thread.Sleep(5000);
