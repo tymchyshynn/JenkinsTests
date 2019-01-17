@@ -29,15 +29,5 @@ node('master') {
 		}
 		isFailed =true
 	}
-	#stage('Reporting')
-    #{
-     #   if(isFailed)
-      #  {
-       #     slackSend color: 'danger', message: 'Tests failed.'
-        #}
-        #else
-        #{
-          #  slackSend color: 'good', message: 'Tests passed.'
-        #}
-    #}
+	
 }
