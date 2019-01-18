@@ -33,7 +33,7 @@ node('master') {
     }
 	stage('Build Solution')
     {
-        powershell ".\\build.ps1 BuildSolution PhpTravels.UITests.sln'
+        powershell "build.ps1 BuildSolution "
     }	
 	stage('Copy Artifacts')
     {
