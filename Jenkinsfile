@@ -29,7 +29,7 @@ node('master') {
     }
     stage('Restore NuGet') 
 	{ 
-       powershell "build.ps1 RestoreNuGetPackages"
+      '"C:\\Dev\\nuget.exe" restore PhpTravels.UITests.sln'
     }
 	stage('Build Solution')
     {
