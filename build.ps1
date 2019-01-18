@@ -35,14 +35,14 @@ Function RestoreNuGetPackages()
 {
     DownloadNuGet
     Write-Output 'Restoring NuGet packages...'
-	 & "C:\\Dev\\nuget.exe" PhpTravels.UITests.sln
+	& "C:\Dev\nuget.exe"
     # NuGet.exe call here
 }
 
 Function BuildSolution()
 {
     Write-Output "Building '$Solution' solution..."
-	 & "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe" PhpTravels.UITests.sln
+	
     # MSBuild.exe call here
 }
 
