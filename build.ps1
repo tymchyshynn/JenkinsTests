@@ -35,7 +35,7 @@ Function RestoreNuGetPackages()
 {
     DownloadNuGet
     Write-Output 'Restoring NuGet packages...'
-	 & '"C:\\Dev\\nuget.exe" restore PhpTravels.UITests.sln'
+	 & "C:\\Dev\\nuget.exe" PhpTravels.UITests.sln
     # NuGet.exe call here
 }
 
