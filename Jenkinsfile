@@ -29,11 +29,11 @@ node('master') {
     }
     stage('Restore NuGet') 
 	{ 
-     powershell "build.ps1 RestoreNuGetPackages"
+         bat '"C:\\Dev\\nuget.exe" restore PhpTravels.UITests.sln'
     }
 	stage('Build Solution')
     {
-        bat '"C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" PhpTravels.UITests.sln'
+        powershell ".\\build.ps1 BuildSolution PhpTravels.UITests.sln'
     }	
 	stage('Copy Artifacts')
     {
