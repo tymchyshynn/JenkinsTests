@@ -35,7 +35,7 @@ Function RestoreNuGetPackages()
 {
     DownloadNuGet
     Write-Output 'Restoring NuGet packages...'
-	& "C:\Dev\nuget.exe"
+	& "C:\\Dev\\nuget.exe"
     # NuGet.exe call here
 }
 
